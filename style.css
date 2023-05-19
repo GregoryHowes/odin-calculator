@@ -1,0 +1,19 @@
+body {
+    background-color: lightgrey;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.btn {
+    background-color: white;
+}
+
+.calculator-body {
+    margin:auto;
+    height: 70vh;
+    width: 30vw;
+    background-color: cyan;
+}
