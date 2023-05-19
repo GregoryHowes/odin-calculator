@@ -2,13 +2,26 @@ body {
     background-color: lightgrey;
 }
 
+
+
 .row {
     display: flex;
     flex: 1;
+    justify-content: space-evenly;
+}
+
+.display {
+    width: 80%;
+    background-color: white;
+    height: 1.5rem;
+    justify-content: center;
+    
 }
 
 .btn {
     background-color: white;
+    aspect-ratio: 1 / 1 ;
+    width: 15%;
 }
 
 .calculator-body {
