@@ -6,7 +6,9 @@ body {
     background-color: lightgrey;
 }
 
-
+p {
+    color: black;
+}
 
 .row {
     display: flex;
@@ -15,13 +17,13 @@ body {
     margin: 2vw 2vw;
 }
 
-.display {
+.readout {
     width: 26vw;
     height: 5vw;
     background-color: white;
     justify-content: center;
     border-radius: 15px;
-    font-size: 5em;
+    font-size: 4vw;
     text-align: right;
     
 }
