@@ -1,4 +1,8 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+
 body {
+    font-family: 'Roboto', sans-serif;
     background-color: lightgrey;
 }
 
@@ -7,26 +11,58 @@ body {
 .row {
     display: flex;
     flex: 1;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 2vw 2vw;
 }
 
 .display {
-    width: 80%;
+    width: 26vw;
+    height: 5vw;
     background-color: white;
-    height: 1.5rem;
     justify-content: center;
+    border-radius: 15px;
+    font-size: 5em;
+    text-align: right;
     
 }
 
 .btn {
-    background-color: white;
+    font-size: 1.5em;
+    display: flex;
+    background-color: lightgreen;
+    justify-content: center;
+    align-items: center;
     aspect-ratio: 1 / 1 ;
-    width: 15%;
+    width: 5vw;
+    border-radius: 15px;
+}
+
+.btn:hover{
+    background-color: green;
+}
+
+#clear {
+    background-color: lightcoral;
+}
+
+#clear:hover {
+    background-color: coral;
+}
+
+#equal {
+    background-color: lightblue;
+}
+
+#equal:hover {
+    background-color: blue;
 }
 
 .calculator-body {
     margin:auto;
-    height: 70vh;
+    height: auto;
     width: 30vw;
-    background-color: cyan;
+    background-color: black;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    border-radius: 15px;
 }
