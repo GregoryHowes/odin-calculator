@@ -22,6 +22,9 @@ btnClear.addEventListener("click", clearDisplay);
 const btnNegative = document.querySelector("#neg");
 btnNegative.addEventListener("click", switchNegative);
 
+const btnDelete = document.querySelector("#del");
+btnDelete.addEventListener("click", deleteNumber);
+
 //--------------------------
 
 
@@ -74,4 +77,15 @@ function switchNegative() {
         //currentDigits = "TEST";
     }
     numberDisplay.innerText = currentDigits;
+}
+
+function deleteNumber() {
+    currentDigits = currentDigits.substr(0, currentDigits.length - 1);
+    if (currentDigits == "" || currentDigits == "-" ) {
+        currentDigits = "0";
+        numberDisplay.innerText = currentDigits;
+    } else {
+        numberDisplay.innerText = currentDigits;
+    }
+
 }
