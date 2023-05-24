@@ -3,8 +3,9 @@ const maxDigits = 12;
 
 //define global variables
 let currentDigits = "0";
-usedDecimalPoint = false;
-isNegative = false;
+let usedDecimalPoint = false;
+let isNegative = false;
+let currentOperator = "";
 
 
 //set the initial number display
@@ -12,9 +13,13 @@ const numberDisplay = document.querySelector(".readout");
 numberDisplay.innerText = currentDigits;
 
 //--------------------------
-// Create listeners for keys
+// Create listeners for number keys
 const numberButtons = Array.from(document.querySelectorAll('.btn-num'));
 numberButtons.forEach(numberButton => numberButton.addEventListener('click', inputNumber));
+
+// Create listeners for operator keys
+const operatorButtons = Array.from(document.querySelectorAll(".btn-operator"));
+operatorButtons.forEach(operatorButton => operatorButton.addEventListener("click", selectOperator));
 
 const btnClear = document.querySelector("#clear");
 btnClear.addEventListener("click", clearDisplay);
@@ -24,6 +29,7 @@ btnNegative.addEventListener("click", switchNegative);
 
 const btnDelete = document.querySelector("#del");
 btnDelete.addEventListener("click", deleteNumber);
+
 
 //--------------------------
 
@@ -87,5 +93,18 @@ function deleteNumber() {
     } else {
         numberDisplay.innerText = currentDigits;
     }
-
 }
+
+function selectOperator(e) {
+    //set currentOperator, which we can use to check what should happen
+    // any time an operator or the equal key is pressed
+    if (e.srcElement.innerText == "X") {
+        currentOperator = "*";
+    } else if (e.srcElement.innerText == "÷") {
+        currentOperator = "/";
+    } else {
+        currentOperator = e.srcElement.innerText;
+    }
+    console.log(currentOperator);
+}
+
