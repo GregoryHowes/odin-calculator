@@ -4,6 +4,7 @@ const maxDigits = 12;
 //define global variables
 let currentDigits = "0";
 usedDecimalPoint = false;
+isNegative = false;
 
 
 //set the initial number display
@@ -18,6 +19,9 @@ numberButtons.forEach(numberButton => numberButton.addEventListener('click', inp
 const btnClear = document.querySelector("#clear");
 btnClear.addEventListener("click", clearDisplay);
 
+const btnNegative = document.querySelector("#neg");
+btnNegative.addEventListener("click", switchNegative);
+
 //--------------------------
 
 
@@ -26,7 +30,7 @@ function inputNumber(e) {
     //check that there is space to add extra digits
     if (currentDigits.length < maxDigits) {
         if (e.srcElement.innerText === ".") {
-            if (!usedDecimalPoint) {
+            if (!usedDecimalPoint && currentDigits.length < maxDigits -1) {
                 updateDisplay(e.srcElement.innerText);
                 usedDecimalPoint = true;
             }
@@ -58,4 +62,16 @@ function clearDisplay() {
     currentDigits = "0";
     numberDisplay.innerText = currentDigits;
     usedDecimalPoint = false;
+}
+
+function switchNegative() {
+    if (!isNegative && currentDigits.length < maxDigits - 1 && currentDigits !== "0") {
+        currentDigits = "-" + currentDigits;
+        isNegative = true;
+    } else if (isNegative) {
+        currentDigits = currentDigits.replace("-", "");
+        isNegative = false;
+        //currentDigits = "TEST";
+    }
+    numberDisplay.innerText = currentDigits;
 }
