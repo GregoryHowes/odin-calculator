@@ -3,6 +3,7 @@ const maxDigits = 12;
 
 //define global variables
 let currentDigits = "0";
+let previousDigits = "0"; //this gets set when the user selects an operator
 let usedDecimalPoint = false;
 let isNegative = false;
 let currentOperator = "";
@@ -52,6 +53,7 @@ function inputNumber(e) {
 }
 
 function updateDisplay(digit) {
+
     //if display is still zero then set it to blank
     if (currentDigits == "0") {
         if (digit == ".") {
@@ -96,6 +98,14 @@ function deleteNumber() {
 }
 
 function selectOperator(e) {
+
+    //check if this is the first number entered, or if we're making a calculation
+    if (currentOperator !== "") {
+        updateTotal();
+        //currentDigits = "";
+        
+    }
+
     //set currentOperator, which we can use to check what should happen
     // any time an operator or the equal key is pressed
     if (e.srcElement.innerText == "X") {
@@ -108,3 +118,14 @@ function selectOperator(e) {
     console.log(currentOperator);
 }
 
+function updateTotal() {
+    if (previousDigits != "") {
+        let tempNum = currentDigits;
+        currentDigits += previousDigits;
+        previousDigits = tempNum;
+        numberDisplay.innerText = currentDigits;
+        console.log(currentDigits);
+        console.log("test");
+        
+    }
+}

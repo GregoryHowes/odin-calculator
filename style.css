@@ -38,6 +38,7 @@ p {
     aspect-ratio: 1 / 1 ;
     width: 5vw;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .btn:hover{
