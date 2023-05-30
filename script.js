@@ -7,6 +7,7 @@ let previousDigits = "0"; //this gets set when the user selects an operator
 let usedDecimalPoint = false;
 let isNegative = false;
 let currentOperator = "";
+let firstNumberAfterOperator = false;
 
 
 //set the initial number display
@@ -31,12 +32,23 @@ btnNegative.addEventListener("click", switchNegative);
 const btnDelete = document.querySelector("#del");
 btnDelete.addEventListener("click", deleteNumber);
 
+const btnEqual = document.querySelector("#equal");
+btnEqual.addEventListener("click", doEqual);
+
 
 //--------------------------
 
 
 
 function inputNumber(e) {
+
+    if (firstNumberAfterOperator) {
+        currentDigits = "";
+        numberDisplay.innerText = currentDigits;
+        usedDecimalPoint = false;
+
+    }
+
     //check that there is space to add extra digits
     if (currentDigits.length < maxDigits) {
         if (e.srcElement.innerText === ".") {
@@ -50,6 +62,7 @@ function inputNumber(e) {
         }
     }
     console.log(e.srcElement.innerText);
+    firstNumberAfterOperator = false;
 }
 
 function updateDisplay(digit) {
@@ -71,6 +84,9 @@ function updateDisplay(digit) {
 
 function clearDisplay() {
     currentDigits = "0";
+    previousDigits = "";
+    currentOperator = "";
+    firstNumberAfterOperator = false;
     numberDisplay.innerText = currentDigits;
     usedDecimalPoint = false;
 }
@@ -116,16 +132,31 @@ function selectOperator(e) {
         currentOperator = e.srcElement.innerText;
     }
     console.log(currentOperator);
+    previousDigits = currentDigits;
+    firstNumberAfterOperator = true;
 }
 
 function updateTotal() {
     if (previousDigits != "") {
         let tempNum = currentDigits;
-        currentDigits += previousDigits;
-        previousDigits = tempNum;
+        if (currentOperator == "+") {
+            currentDigits = Number(previousDigits) + Number(currentDigits);
+        } else if (currentOperator == "-") {
+            currentDigits = Number(previousDigits) - Number(currentDigits);
+        } else if (currentOperator == "/") {
+            currentDigits = Number(previousDigits) / Number(currentDigits);
+        } else {
+            currentDigits = Number(previousDigits) * Number(currentDigits);
+        }
+        previousDigits = "";
         numberDisplay.innerText = currentDigits;
+        usedDecimalPoint = false;
         console.log(currentDigits);
         console.log("test");
         
     }
+}
+
+function doEqual() {
+    updateTotal();
 }
