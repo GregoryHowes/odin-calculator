@@ -144,7 +144,7 @@ function updateTotal() {
         } else if (currentOperator == "-") {
             currentDigits = Number(previousDigits) - Number(currentDigits);
         } else if (currentOperator == "/") {
-            currentDigits = Number(previousDigits) / Number(currentDigits);
+            currentDigits = roundToTwo(Number(previousDigits) / Number(currentDigits));
         } else {
             currentDigits = Number(previousDigits) * Number(currentDigits);
         }
@@ -159,4 +159,9 @@ function updateTotal() {
 
 function doEqual() {
     updateTotal();
+}
+
+//don't really understand how this rounding function works!
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
 }
