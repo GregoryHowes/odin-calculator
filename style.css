@@ -26,6 +26,7 @@ p {
     font-size: 3vw;
     text-align: right;
     align-items: center;
+    user-select: none;
     
 }
 
@@ -39,6 +40,7 @@ p {
     width: 5vw;
     border-radius: 15px;
     cursor: pointer;
+    user-select: none;
 }
 
 .btn:hover{

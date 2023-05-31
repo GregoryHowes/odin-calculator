@@ -35,10 +35,14 @@ btnDelete.addEventListener("click", deleteNumber);
 const btnEqual = document.querySelector("#equal");
 btnEqual.addEventListener("click", doEqual);
 
+const keyPress = document.addEventListener("keydown", checkInputKey);
 
 //--------------------------
 
 
+function checkInputKey(e) {
+    console.log(e.key);
+}
 
 function inputNumber(e) {
 
@@ -144,7 +148,12 @@ function updateTotal() {
         } else if (currentOperator == "-") {
             currentDigits = Number(previousDigits) - Number(currentDigits);
         } else if (currentOperator == "/") {
-            currentDigits = roundToTwo(Number(previousDigits) / Number(currentDigits));
+            if (currentDigits == "0") {
+                //don't allow division by zero
+                currentDigits = "ERROR!";
+            } else {
+                currentDigits = roundToTwo(Number(previousDigits) / Number(currentDigits));
+            }
         } else {
             currentDigits = Number(previousDigits) * Number(currentDigits);
         }
