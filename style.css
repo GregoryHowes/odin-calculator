@@ -43,9 +43,19 @@ p {
     user-select: none;
 }
 
-.btn:hover{
+.btn-num:hover,
+.btn-num:hover, 
+.btn-operator:hover, 
+#neg:hover, 
+#del:hover {
     background-color: green;
 }
+
+
+.btn-operator.active {
+    background-color: green;
+}
+
 
 #clear {
     background-color: lightcoral;

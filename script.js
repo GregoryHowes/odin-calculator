@@ -119,6 +119,10 @@ function deleteNumber() {
 
 function selectOperator(e) {
 
+    console.log(e);
+    removeActiveClasses();
+    e.srcElement.classList.add("active");
+
     //check if this is the first number entered, or if we're making a calculation
     if (currentOperator !== "") {
         updateTotal();
@@ -162,6 +166,7 @@ function updateTotal() {
         usedDecimalPoint = false;
         console.log(currentDigits);
         console.log("test");
+        removeActiveClasses();
         
     }
 }
@@ -173,4 +178,8 @@ function doEqual() {
 //don't really understand how this rounding function works!
 function roundToTwo(num) {
     return +(Math.round(num + "e+2")  + "e-2");
+}
+
+function removeActiveClasses() {
+    operatorButtons.forEach(operatorButton => operatorButton.classList.remove("active"));
 }
