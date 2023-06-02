@@ -42,6 +42,24 @@ const keyPress = document.addEventListener("keydown", checkInputKey);
 
 function checkInputKey(e) {
     console.log(e.key);
+    //I doubt this is the best way to do this, but I don't really want to rework the code
+    // so, if a valid calculator button is pressed using the keyboard, trigger a click event on the html element 
+    if (e.key == "Backspace") {
+        deleteNumber();
+    } else if (e.key == "=") {
+        doEqual();
+    } else if (e.key == "/") {
+        operatorButtons[0].click();
+    } else if (e.key == "*") {
+        operatorButtons[1].click();
+    } else if (e.key == "-") {
+        operatorButtons[2].click();
+    }  else if (e.key == "+") {
+        operatorButtons[3].click();
+    } else if (e.key == "1" || e.key == "2") {
+        //const clickedNumber = operatorButtons.find(element => element > 10);
+        //console.log(clickedNumber);
+    }
 }
 
 function inputNumber(e) {
@@ -93,6 +111,7 @@ function clearDisplay() {
     firstNumberAfterOperator = false;
     numberDisplay.innerText = currentDigits;
     usedDecimalPoint = false;
+    removeActiveClasses();
 }
 
 function switchNegative() {
@@ -156,12 +175,23 @@ function updateTotal() {
                 //don't allow division by zero
                 currentDigits = "ERROR!";
             } else {
-                currentDigits = roundToTwo(Number(previousDigits) / Number(currentDigits));
+                //currentDigits = roundToTwo(Number(previousDigits) / Number(currentDigits));
+                currentDigits = Number(previousDigits) / Number(currentDigits);
             }
         } else {
             currentDigits = Number(previousDigits) * Number(currentDigits);
         }
         previousDigits = "";
+
+        //check if number if too long, and if it needs rounding
+        if (currentDigits.toString().length > maxDigits) {
+            if (currentDigits.toString().includes(".")) {
+                currentDigits = roundToTwo(currentDigits);
+            } else {
+                currentDigits = "TOO LONG!";
+            }
+        }
+
         numberDisplay.innerText = currentDigits;
         usedDecimalPoint = false;
         console.log(currentDigits);
