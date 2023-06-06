@@ -56,11 +56,26 @@ function checkInputKey(e) {
         operatorButtons[2].click();
     }  else if (e.key == "+") {
         operatorButtons[3].click();
-    } else if (e.key == "1" || e.key == "2") {
+    } else if (!isNaN(e.key) || e.key == ".") {
+        
+        const selectedItem = numberButtons.findIndex(checkButton(this, e.key));
+        console.log(selectedItem);
+        //console.log(numberButtons.findIndex(element => element.includes("7")));
+
+
+
+        
         //const clickedNumber = operatorButtons.find(element => element > 10);
         //console.log(clickedNumber);
     }
 }
+
+function checkButton(button, findMe) {
+    //return age > 18;
+    
+    //console.log(button);
+    return button.id === "key-" + findMe;
+  }
 
 function inputNumber(e) {
 
