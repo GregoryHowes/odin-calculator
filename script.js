@@ -56,17 +56,49 @@ function checkInputKey(e) {
         operatorButtons[2].click();
     }  else if (e.key == "+") {
         operatorButtons[3].click();
+    }  else if (e.key == "c" || e.key == "C") {
+        btnClear.click();
     } else if (!isNaN(e.key) || e.key == ".") {
+
+        //I know hardcoding the key positions in the array here
+        //isn't elegant at all, but try as I might, I couldn't
+        //find out how to do it neatly
+        switch (e.key){
+            case "7":
+                numberButtons[0].click();
+                break;
+            case "8":
+                numberButtons[1].click();
+                break;
+            case "9":
+                numberButtons[2].click();
+                break;
+            case "4":
+                numberButtons[3].click();
+                break;
+            case "5":
+                numberButtons[4].click();
+                break;
+            case "6":
+                numberButtons[5].click();
+                break;
+            case "1":
+                numberButtons[6].click();
+                break;
+            case "2":
+                numberButtons[7].click();
+                break;
+            case "3":
+                numberButtons[8].click();
+                break;
+            case "0":
+                numberButtons[9].click();
+                break;
+            case ".":
+                numberButtons[11].click();
+                break;
+        }
         
-        const selectedItem = numberButtons.findIndex(checkButton(this, e.key));
-        console.log(selectedItem);
-        //console.log(numberButtons.findIndex(element => element.includes("7")));
-
-
-
-        
-        //const clickedNumber = operatorButtons.find(element => element > 10);
-        //console.log(clickedNumber);
     }
 }
 
